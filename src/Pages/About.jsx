@@ -4,7 +4,7 @@ import Hero from '../Components/Home/Hero';
 const About = () => {
   return (
     <div>
-        <Hero/>
+        About Page
     </div>
   )
 }

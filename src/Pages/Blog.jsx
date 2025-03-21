@@ -4,7 +4,7 @@ import Start from '../Components/Blog/Start';
 const Blog = () => {
   return (
     <div>
-        <Start/>
+        Blog 
     </div>
   )
 }

@@ -9,6 +9,7 @@ import Contact from "./Pages/Contact";
 import Navbar from "./Components/Navbar"; // Ensure Navbar is imported
 import Footer from "./Components/Footer"; // Ensure Footer is imported
 import Cart from "./Components/ShopOtherPages/Cart";
+import ShopCheckout from "./Components/ShopOtherPages/ShopCheckout";
 
 
 
@@ -31,7 +32,8 @@ const router = createBrowserRouter([{
     {path:"/shop" ,element:<Shop/>},
     {path:"/blog" ,element:<Blog/>},
     {path:"/contact" ,element:<Contact/>},
-    {path:"/cart", element:<Cart/>}
+    {path:"/cart", element:<Cart/>},
+    {path:"/checkout",element:<ShopCheckout/>}
   ]
 }])
 

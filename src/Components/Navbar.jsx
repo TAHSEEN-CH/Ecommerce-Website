@@ -529,7 +529,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-[#F0B100]" to="">
+                <Link className="hover:text-[#F0B100]" to="/checkout">
                   Checkout Page
                 </Link>
               </li>

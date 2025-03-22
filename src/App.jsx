@@ -10,6 +10,8 @@ import Navbar from "./Components/Navbar"; // Ensure Navbar is imported
 import Footer from "./Components/Footer"; // Ensure Footer is imported
 import Cart from "./Components/ShopOtherPages/Cart";
 import ShopCheckout from "./Components/ShopOtherPages/ShopCheckout";
+import Whishlist from "./Components/ShopOtherPages/Whishlist";
+import EmptyCard from "./Components/ShopOtherPages/EmptyCard";
 
 
 
@@ -33,7 +35,9 @@ const router = createBrowserRouter([{
     {path:"/blog" ,element:<Blog/>},
     {path:"/contact" ,element:<Contact/>},
     {path:"/cart", element:<Cart/>},
-    {path:"/checkout",element:<ShopCheckout/>}
+    {path:"/checkout",element:<ShopCheckout/>},
+    {path:"/whishlist",element:<Whishlist/>},
+    {path:"/emptyCard",element:<EmptyCard/>}
   ]
 }])
 

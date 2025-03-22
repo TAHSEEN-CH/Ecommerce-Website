@@ -534,12 +534,12 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-[#F0B100]" to="">
+                <Link className="hover:text-[#F0B100]" to="/whishlist">
                   Wishlist Page
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-[#F0B100]" to="">
+                <Link className="hover:text-[#F0B100]" to="/emptyCard">
                   Empty Cart Page
                 </Link>
               </li>

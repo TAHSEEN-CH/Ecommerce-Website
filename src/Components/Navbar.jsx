@@ -441,7 +441,7 @@ const Navbar = () => {
       {/* Shop Links Dropdown */}
       {shopLinksVisible && (
         <div
-          className="w-[80vw] absolute z-1 top-[4.5rem] left-[20px] h-[40vh] bg-gradient-to-r from-gray-200 to-gray-100 rounded-xl flex justify-around pt-3"
+          className="w-[80vw] absolute top-[4.5rem] left-[20px] h-[39vh] z-89 bg-white from-gray-200 to-gray-100 rounded-xl flex justify-around pt-3"
           onMouseEnter={() => setShopLinksVisible(true)}
           onMouseLeave={() => setShopLinksVisible(false)}
         >
@@ -450,22 +450,22 @@ const Navbar = () => {
             <ul className="flex flex-col gap-3">
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Shop Column 3
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Shop1 Column 4
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Shop Column Left Slider
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Shop1 Column Right Slider
                 </Link>
               </li>
             </ul>
@@ -475,22 +475,22 @@ const Navbar = () => {
             <ul className="flex flex-col gap-3">
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Product Single
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Product Variable
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Product Affiliate
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Product Group
                 </Link>
               </li>
             </ul>
@@ -499,23 +499,31 @@ const Navbar = () => {
             <h1 className="text-xl font-semibold">Single Product Page</h1>
             <ul className="flex flex-col gap-3">
               <li>
-                <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                <Link className="hover:text-[#F0B100]" to="/teampage">
+                  {/* Produt Slider  */}
+                  Team Page
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#F0B100]" to="addproduct">
+                  {/* Product Gallery Left */}
+                  Add Product Form 
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-[#F0B100]" to="/adduser">
+                  {/* Product Gallery Right */}
+                  Add User Form
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Product Sticky Left
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-[#F0B100]" to="">
-                  Shop1 Detail
+                  Product Sticky Right
                 </Link>
               </li>
             </ul>
@@ -551,7 +559,7 @@ const Navbar = () => {
       {/* Blog Links Dropdown */}
       {blogshow && (
         <div
-          className="w-[20vw] absolute z-1 top-[4.5rem] left-[45rem] h-[20vh] rounded-xl bg-gradient-to-r  from-gray-200 to-gray-100 "
+          className="w-[20vw] absolute z-1 top-[4.5rem] left-[45rem] h-[20vh] rounded-xl bg-white "
           onMouseEnter={() => setblogshow(true)}
           onMouseLeave={() => setblogshow(false)}
         >

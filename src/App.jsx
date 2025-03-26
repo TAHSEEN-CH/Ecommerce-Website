@@ -12,6 +12,11 @@ import Cart from "./Components/ShopOtherPages/Cart";
 import ShopCheckout from "./Components/ShopOtherPages/ShopCheckout";
 import Whishlist from "./Components/ShopOtherPages/Whishlist";
 import EmptyCard from "./Components/ShopOtherPages/EmptyCard";
+import ProductSlider from "./Pages/Single Product/ProductSlider";
+import TeamPage from "./Pages/TeamPage";
+import AddProduct from "./Components/AddProduct";
+import AddUser from "./Components/ADDuser";
+
 
 
 
@@ -37,7 +42,11 @@ const router = createBrowserRouter([{
     {path:"/cart", element:<Cart/>},
     {path:"/checkout",element:<ShopCheckout/>},
     {path:"/whishlist",element:<Whishlist/>},
-    {path:"/emptyCard",element:<EmptyCard/>}
+    {path:"/emptyCard",element:<EmptyCard/>},
+    {path:"/productslider",element:<ProductSlider/>},
+    // {path:"/teampage",element:<TeamPage/>}
+    {path:"/addproduct",element:<AddProduct/>},
+    {path:"/adduser",element:<AddUser/>}
   ]
 }])
 

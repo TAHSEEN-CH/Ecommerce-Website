@@ -1,0 +1,26 @@
+{"user":[
+    {
+      "id": 1,
+      "image": "/user/user.png",
+      "firstName": "John",
+      "lastName": "Doe",
+      "number": "+1 234 567 890",
+      "email": "john.doe@example.com"
+    },
+    {
+      "id": 2,
+      "image": "/user/user.png",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "number": "+1 987 654 321",
+      "email": "jane.smith@example.com"
+    },
+    {
+      "id": 3,
+      "image": "/user/user.png",
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "number": "+44 123 456 789",
+      "email": "michael.brown@example.com"
+    }
+  ]}

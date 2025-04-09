@@ -26,10 +26,10 @@ const Footer = () => {
         </div>
 
         {/* Footer Links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-sm text-center sm:text-left">
-          <div>
-            <h3 className="font-semibold text-xl text-gray-800">My Account</h3>
-            <div className="mt-3 space-y-2">
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 gap-15 text-sm text-center ">
+          <div className="flex flex-wrap ">
+            <h3 className="font-semibold max-lg:mx-auto flex lg:ps-4  text-xl text-gray-800">My Account</h3>
+            <div className="space-y-3  text-nowrap flex flex-wrap ">
               <p className="flex justify-center sm:justify-start items-center gap-2">
                 <FaMapMarkerAlt className="text-lg" /> Your address goes here.
               </p>

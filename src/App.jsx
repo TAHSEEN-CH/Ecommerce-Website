@@ -19,12 +19,12 @@ import BlogList from "./Pages/BlogList";
 import SingleBlog from "./Pages/SingleBlog";
 import ShopColumn from "./Pages/ShopColumn";
 import ShopColumnSecond from "./Pages/ShopColumnSecond";
-import AddProduct from "./Pages/AddProduct";
-import AddUser from "./Pages/ADDuser";
+
 import AdminPanel from "./Pages/AdminPanel";
 import Dashboard from "./Pages/Dashboard";
 import Products from "./Pages/Products";
 import Users from "./Pages/Users";
+import AddProduct from "./Pages/AddProduct";
 
 
 
@@ -60,12 +60,12 @@ const router = createBrowserRouter([{
     {path:"/contact" ,element:<Contact/>},
     {path:"/cart", element:<Cart/>},
     {path:"/singleproduct", element:<SingleProduct/>},
-    {path:"/addproduct", element:<AddProduct/>},
-    {path:"/adduser", element:< AddUser/>},
+   
     {path:"/adminpanel", element:< AdminPanel/>},
     {path:"/dashboard", element:< Dashboard/>},
     {path:"/products", element:< Products/>},
-    {path:"/users", element:< Users/>}
+    {path:"/users", element:< Users/>},
+    {path:"/addproduct", element:< AddProduct/>}
     // {path:"/about", element:<About/>}
   ]
 }])

@@ -25,6 +25,29 @@ const Users = () => {
     localStorage.setItem("activePage", activePage);
   }, [location.pathname, activePage]);
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const image = form.image.files[0];
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const contact = form.contact.value;
+    const email = form.email.value;
+
+    console.log({
+      image,
+      firstName,
+      lastName,
+      contact,
+      email,
+    });
+
+    form.reset();
+    // setShowModal(false); // close modal after submit
+  };
+
 
   return (
     <>
@@ -121,12 +144,12 @@ const Users = () => {
         <div className="bg-white p-6 w-full">
           <div className="flex justify-between mb-4">
             <h2 className="text-xl font-semibold">User List</h2>
-            <Link
-              to="/add-users"
+            <button
+              onClick={() => setShowModal(true)}
               className="bg-gray-900 text-white px-4 rounded-xl py-2 cursor-pointer flex items-center"
             >
               <CiCirclePlus className="mr-2 text-[20px] font-bold" /> Add User
-            </Link>
+            </button>
           </div>
           <div className="overflow-x-auto">
             <table className="hidden md:table w-full border-collapse border border-gray-300">
@@ -219,6 +242,98 @@ const Users = () => {
           </div>
         </div>
       </div>
+
+
+
+      {/* Add NewUser Model */}
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-150 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="bg-white w-full max-w-[600px] p-6 rounded-xl shadow-lg relative">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3 text-xl font-bold text-gray-600 hover:text-red-500 cursor-pointer"
+            >
+              &times;
+            </button>
+
+            <h1 className="text-3xl text-center font-bold text-gray-800 mb-6">
+              Add User
+            </h1>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Image Input */}
+              <div className="flex flex-col gap-2">
+                <label className="text-gray-700 font-medium">Select Image</label>
+                <input
+                  type="file"
+                  name="image"
+                  required
+                  accept="image/*"
+                  className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
+                />
+              </div>
+
+              {/* Name Inputs */}
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col w-full md:w-1/2 gap-2">
+                  <label className="text-gray-700 font-medium">First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    required
+                    className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
+                    placeholder="Enter First Name"
+                  />
+                </div>
+                <div className="flex flex-col w-full md:w-1/2 gap-2">
+                  <label className="text-gray-700 font-medium">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    required
+                    className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
+                    placeholder="Enter Last Name"
+                  />
+                </div>
+              </div>
+
+              {/* Contact */}
+              <div className="flex flex-col gap-2">
+                <label className="text-gray-700 font-medium">Contact No.</label>
+                <input
+                  type="text"
+                  name="contact"
+                  required
+                  className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
+                  placeholder="Enter Contact Number"
+                />
+              </div>
+
+              {/* Email */}
+              <div className="flex flex-col gap-2">
+                <label className="text-gray-700 font-medium">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
+                  placeholder="Enter Email Address"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg font-semibold rounded-lg shadow-md hover:opacity-90 transition cursor-pointer"
+              >
+                ADD USER
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };

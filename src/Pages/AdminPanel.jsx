@@ -7,7 +7,7 @@ import { IoCartOutline, IoHomeOutline } from "react-icons/io5";
 const AdminPanel = () => {
 
   const [activePage, setActivePage] = useState(() => {
-    return localStorage.getItem("activePage") || "Dashboard";
+    return localStorage.getItem("dashboard") || "Dashboard";
   });
   const [isOpen, setIsOpen] = useState(false);
 

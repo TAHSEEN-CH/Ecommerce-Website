@@ -1,36 +1,68 @@
 import { useEffect, useState } from "react";
 import { FaBars, FaEllipsisV, FaRegUser, FaTimes } from "react-icons/fa";
-import product from "../api/products.json";
 import { CiCirclePlus } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoCartOutline, IoHomeOutline } from "react-icons/io5";
+import productData from "../api/products.json";
 
 const Products = () => {
-  const [products, setProducts] = useState(product.products);
+  const location = useLocation();
+  const [products, setProducts] = useState(productData.products);
   const [activeProductId, setActiveProductId] = useState(null);
- 
-  const [activePage, setActivePage] = useState(() => {
-    return localStorage.getItem("activePage") || "Dashboard";
-  });
+  const [activePage, setActivePage] = useState(() => localStorage.getItem("activePage") || "Dashboard");
   const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-    useEffect(() => {
-      const currentPath = location.pathname;
-      if (currentPath === "/") {
-        setActivePage("Dashboard");
-      } else if (currentPath === "/products") {
-        setActivePage("Products");
-      } else if (currentPath === "/users") {
-        setActivePage("Users");
-      }
-      localStorage.setItem("activePage", activePage);
-    }, [location.pathname, activePage]);
-  
-  
+  useEffect(() => {
+    const currentPath = location.pathname;
+    if (currentPath === "/") {
+      setActivePage("Dashboard");
+    } else if (currentPath === "/products") {
+      setActivePage("Products");
+    } else if (currentPath === "/users") {
+      setActivePage("Users");
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    localStorage.setItem("activePage", activePage);
+  }, [activePage]);
+
+  const handleToggle = (id) => {
+    setActiveProductId((prevId) => (prevId === id ? null : id));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const productName = form.productName.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const description = form.description.value;
+    const images = form.images.files;
+
+    if (images.length !== 4) {
+      alert("Please select exactly 4 images.");
+      return;
+    }
+
+    console.log({
+      productName,
+      category,
+      price,
+      description,
+      images: Array.from(images),
+    });
+
+    form.reset();
+    setShowModal(false); // Close modal after submit
+  };
+
 
   return (
     <>
-       <div className="flex h-full lg:h-[85vh] justify-center  flex-col lg:flex-row pt-12 pb-20 lg:p-0 lg:mt-0 gap-y-3 relative">
+      <div className="flex h-full lg:h-[85vh] justify-center  flex-col lg:flex-row pt-12 pb-20 lg:p-0 lg:mt-0 gap-y-3 relative">
         <div className="shadow-lg ">
           {/* Toggle button for small screens */}
           <button
@@ -119,17 +151,17 @@ const Products = () => {
           </aside>
         </div>
 
-        {/* Main content */}          
+        {/* Main content */}
         <div class=" w-full">
           <div className="bg-white shadow-md rounded-lg p-6">
             <div className="flex flex-col md:flex-row justify-between mb-4 gap-4">
               <h2 className="text-xl font-semibold">Product List</h2>
-              <Link
-                to="/add-products"
+              <button
+                onClick={() => setShowModal(true)}
                 className="bg-gray-900 text-white px-4 rounded-xl py-2 cursor-pointer flex items-center"
               >
                 <CiCirclePlus className="mr-2 text-[20px] font-bold" /> Add Product
-              </Link>
+              </button>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full bg-white border border-gray-200 rounded-lg hidden md:table">
@@ -166,8 +198,8 @@ const Products = () => {
                       <td className="py-3 px-4">
                         <span
                           className={`px-2 py-1 rounded-md text-sm ${product.status === "Active"
-                              ? "bg-green-200 text-green-800"
-                              : "bg-red-200 text-red-800"
+                            ? "bg-green-200 text-green-800"
+                            : "bg-red-200 text-red-800"
                             }`}
                         >
                           {product.status}
@@ -221,8 +253,8 @@ const Products = () => {
                         </p>
                         <span
                           className={`px-2 py-1 rounded-md text-sm ${product.status === "Active"
-                              ? "bg-green-200 text-green-800"
-                              : "bg-red-200 text-red-800"
+                            ? "bg-green-200 text-green-800"
+                            : "bg-red-200 text-red-800"
                             }`}
                         >
                           {product.status}
@@ -254,6 +286,107 @@ const Products = () => {
           </div>
         </div>
       </div>
+
+
+      {/* Add NewProduct Model */}
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-150 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="bg-white w-full max-w-[600px] p-6 rounded-xl shadow-lg relative m-4">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-4 text-xl font-bold text-gray-600 hover:text-red-500 cursor-pointer"
+            >
+              &times;
+            </button>
+
+            <h1 className="text-3xl text-center font-bold text-gray-800 mb-6">
+              Add New Product
+            </h1>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Image Input */}
+              {/* Basic Info Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <label className="font-medium mb-1 block">Product Name</label>
+                  <input
+                    name="productName"
+                    type="text"
+                    placeholder="Enter Product Name"
+                    required
+                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <div>
+                  <label className="font-medium mb-1 block">Product Price</label>
+                  <input
+                    name="price"
+                    type="text"
+                    placeholder="Price $"
+                    required
+                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+
+                <div>
+                  <label className="font-medium mb-1 block">Product Images</label>
+                  <input
+                    name="images"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    required
+                    className="w-full border border-gray-300 rounded px-2 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                  <p className="text-sm text-gray-500 mt-1">You must select exactly 4 images.</p>
+                </div>
+                <div>
+                  <label className="font-medium mb-1 block">Category</label>
+                  <select
+                    name="category"
+                    required
+                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  >
+                    <option value="">Select a category</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Home & Kitchen">Home & Kitchen</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Books">Books</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Grocery">Grocery</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className="mb-8">
+                <label className="font-medium mb-2 block">Description</label>
+                <textarea
+                  name="description"
+                  placeholder="Enter product description..."
+                  rows={4}
+                  required
+                  className="w-full border border-gray-300 rounded px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+                ></textarea>
+              </div>
+
+              {/* Submit */}
+              <div>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-700 hover:bg-blue-800 transition text-white py-3 rounded-lg font-semibold text-lg shadow"
+                >
+                  Submit Product
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };

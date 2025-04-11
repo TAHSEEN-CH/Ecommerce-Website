@@ -72,9 +72,9 @@ const SingleHero = () => {
         {/* Quantity & Cart Button */}
         <div className="flex items-center gap-3">
           <div className="flex items-center border rounded px-2 py-1.5 text-lg">
-            <button className="px-2" onClick={handleDecrease}>-</button>
+            <button className="px-2 cursor-pointer" onClick={handleDecrease}>-</button>
             <span className="px-3">{quantity}</span>
-            <button className="px-2" onClick={handleIncrease}>+</button>
+            <button className="px-2 cursor-pointer" onClick={handleIncrease}>+</button>
           </div>
           <button className="bg-yellow-500 hover:bg-yellow-600 transition text-white px-5 py-2 rounded text-lg cursor-pointer">
             Add to Cart
@@ -83,10 +83,10 @@ const SingleHero = () => {
 
         {/* Wishlist & Compare */}
         <div className="flex gap-4 mt-5 text-sm text-gray-600  ">
-          <button className="flex items-center gap-1 hover:text-yellow-500 transition">
+          <button className="flex items-center gap-1 hover:text-yellow-500 transition cursor-pointer">
             <IoHeartOutline className="text-lg" /> Add to Wishlist
           </button>
-          <button className="flex items-center gap-1 hover:text-yellow-500 transition">
+          <button className="flex items-center gap-1 hover:text-yellow-500 transition cursor-pointer">
             <HiOutlineSwitchHorizontal className="text-lg" /> Add to Compare
           </button>
         </div>

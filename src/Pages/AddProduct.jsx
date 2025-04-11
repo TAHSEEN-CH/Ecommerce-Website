@@ -1,71 +1,119 @@
-import React from "react";
+import React from 'react';
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const form = e.target;
+
+  const productName = form.productName.value;
+  const category = form.category.value;
+  const price = form.price.value;
+  const description = form.description.value;
+  const images = form.images.files;
+
+  if (images.length !== 4) {
+    alert("Please select exactly 4 images.");
+    return;
+  }
+
+  console.log({
+    productName,
+    category,
+    price,
+    description,
+    images: Array.from(images),
+  });
+
+  form.reset();
+};
 
 const AddProduct = () => {
   return (
-    <div className="w-[full] min-h-screen flex items-center justify-center md:p-10 overflow-hidden">
-      <div className="w-full max-w-[600px] bg-white p-6 rounded-xl shadow-lg">
-        <h1 className="text-4xl text-center font-bold text-gray-800 mb-6">
-          Add Product
+    <div className="w-full min-h-screen bg-gradient-to-br from-gray-100 to-white flex justify-center items-center p-6">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white w-full max-w-3xl rounded-2xl shadow-xl p-8 border border-gray-200"
+      >
+        <h1 className="text-4xl font-bold text-center text-blue-800 mb-8">
+          Add New Product
         </h1>
 
-        <div className="space-y-5">
-          {/* Image Input */}
-          <div className="flex flex-col gap-2">
-            <label className="text-gray-700 font-medium">Select Image</label>
+        {/* Basic Info Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div>
+            <label className="font-medium mb-1 block">Product Name</label>
             <input
-              type="file"
-              className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
-              accept="image/*"
+              name="productName"
+              type="text"
+              placeholder="Enter Product Name"
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <div>
+            <label className="font-medium mb-1 block">Product Price</label>
+            <input
+              name="price"
+              type="text"
+              placeholder="Price $"
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
-          {/* Product Name & Price */}
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex flex-col w-full md:w-1/2 gap-2">
-              <label className="text-gray-700 font-medium">Product Name</label>
-              <input
-                type="text"
-                className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
-                placeholder="Enter product name"
-              />
-            </div>
-            <div className="flex flex-col w-full md:w-1/2 gap-2">
-              <label className="text-gray-700 font-medium">Product Price</label>
-              <input
-                type="number"
-                className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
-                placeholder="Enter price"
-              />
-            </div>
+          <div>
+            <label className="font-medium mb-1 block">Product Images</label>
+            <input
+              name="images"
+              type="file"
+              accept="image/*"
+              multiple
+              required
+              className="w-full border border-gray-300 rounded px-2 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            <p className="text-sm text-gray-500 mt-1">You must select exactly 4 images.</p>
           </div>
-
-          {/* Product Status */}
-          <div className="flex flex-col gap-2">
-            <label className="text-gray-700 font-medium">Product Status</label>
-            <select className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition">
-              <option>Active</option>
-              <option>Inactive</option>
+          <div>
+            <label className="font-medium mb-1 block">Category</label>
+            <select
+              name="category"
+              required
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              <option value="">Select a category</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Home & Kitchen">Home & Kitchen</option>
+              <option value="Beauty">Beauty</option>
+              <option value="Sports">Sports</option>
+              <option value="Books">Books</option>
+              <option value="Toys">Toys</option>
+              <option value="Grocery">Grocery</option>
             </select>
           </div>
+        </div>
 
-          {/* Product Quantity */}
-          <div className="flex flex-col gap-2">
-            <label className="text-gray-700 font-medium">
-              Product Quantity
-            </label>
-            <input
-              type="number"
-              className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400 transition"
-              placeholder="Enter quantity"
-            />
-          </div>
+        {/* Description */}
+        <div className="mb-8">
+          <label className="font-medium mb-2 block">Description</label>
+          <textarea
+            name="description"
+            placeholder="Enter product description..."
+            rows={4}
+            required
+            className="w-full border border-gray-300 rounded px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+          ></textarea>
+        </div>
 
-          {/* Submit Button */}
-          <button className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg font-semibold rounded-lg shadow-md hover:opacity-90 transition">
+        {/* Submit */}
+        <div>
+          <button
+            type="submit"
+            className="w-full bg-blue-700 hover:bg-blue-800 transition text-white py-3 rounded-lg font-semibold text-lg shadow"
+          >
             Submit Product
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SlArrowDown } from "react-icons/sl";
 import { IoMdSettings } from "react-icons/io";
 import { FaHeart } from "react-icons/fa";
@@ -13,6 +13,11 @@ import { RxCross1 } from "react-icons/rx"; // Added close icon
 import ShopPlus from "./ShopPlus";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const MovetoADtoCart=()=>{
+    navigate("/adtoCart");
+  }
+  
   const [menu, setMenu] = useState(false);
   const [shopLinksVisible, setShopLinksVisible] = useState(false); // Fixed typo
   const [blogshow, setblogshow] = useState(false);
@@ -153,7 +158,12 @@ const Navbar = () => {
           <div className="flex gap-x-5 md:text-2xl text-md justify-center items-center">
             <IoMdSettings className="cursor-pointer hover:text-yellow-300" />
             <FaHeart className="cursor-pointer hover:text-yellow-300" />
-            <BsFillBasketFill className="cursor-pointer hover:text-yellow-300" />
+
+            {/* ad to Cart Page Render Icond is here  */}
+            <BsFillBasketFill className="cursor-pointer hover:text-yellow-300"
+            
+            onClick={()=>MovetoADtoCart()}
+            />
             {/* Menu Toggle Button */}
             <IoIosMenu
               className="text-3xl lg:hidden cursor-pointer hover:text-gray-700"

@@ -25,6 +25,7 @@ import AdminPanel from "./Pages/AdminPanel";
 import Dashboard from "./Pages/Dashboard";
 import Products from "./Pages/Products";
 import Users from "./Pages/Users";
+import AddToCART from "./Components/Home/AddToCART";
 
 
 
@@ -45,6 +46,7 @@ const router = createBrowserRouter([{
   children:[
     {path:"/" ,element:<Home/>},
     {path:"/about" ,element:<About/>},
+    {path:"adtoCart",element:<AddToCART/>},
     {path:"/privacypolicy" ,element:<PrivacyPolicy/>},
     {path:"/notpage" ,element:<NotPage/>},
     {path:"/faqpage" ,element:<FaqPage/>},
@@ -65,6 +67,7 @@ const router = createBrowserRouter([{
     {path:"/adminpanel", element:< AdminPanel/>},
     {path:"/dashboard", element:< Dashboard/>},
     {path:"/products", element:< Products/>},
+
     {path:"/users", element:< Users/>}
     // {path:"/about", element:<About/>}
   ]

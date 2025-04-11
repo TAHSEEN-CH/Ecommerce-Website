@@ -34,16 +34,16 @@ const ContactForm = () => {
     <div className="container mx-auto px-4 py-10">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Contact Info Section */}
-        <div className="p-6 shadow-md rounded-sx bg-[#f5f5f5]">
+        <div className="p-6  shadow-md rounded-sx bg-[#f5f5f5]">
           <h2 className="text-2xl font-semibold mb-4">Contact Info</h2>
           <div className="space-y-3 text-gray-600">
             <p className="flex items-center gap-4">
               <span className="text-lg font-semibold">Phone:</span> 0123456789
             </p>
-            <p className="flex items-center gap-4">
-              <span className="text-lg font-semibold">Email:</span> demo@example.com
+            <p className="flex flex-wrap items-center gap-4 md:gap-x-2 gap-y-0">
+              <span className="text-lg font-semibold ">Email:</span> demo@eple.com
             </p>
-            <p className="flex items-center gap-4">
+            <p className="flex flex-wrap items-center gap-4 md:gap-x-2 gap-y-0">
               <span className="text-lg font-semibold">Address:</span> Address goes here.
             </p>
           </div>

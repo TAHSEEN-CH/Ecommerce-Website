@@ -1,10 +1,20 @@
 import React from 'react'
-import Hero from '../Components/Home/Hero';
+import AboutHero from '../Components/About/AboutHero';
+import WelCelex from '../Components/About/WelCelex';
+import AboutProgress from '../Components/About/AboutProgress';
+import AboutCard from '../Components/About/AboutCard';
+import AboutTeam from '../Components/About/AboutTeam';
+import AboutSlider from '../Components/About/AboutSlider';
 
 const About = () => {
   return (
     <div>
-        About Page
+        <AboutHero />
+        <WelCelex />
+        <AboutProgress />
+        <AboutCard />
+        <AboutTeam />
+        <AboutSlider />
     </div>
   )
 }

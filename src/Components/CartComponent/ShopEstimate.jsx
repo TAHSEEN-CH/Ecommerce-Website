@@ -17,7 +17,7 @@ const ShopEstimate = () => {
             <label className="text-gray-700 text-sm">Zip/Postal Code</label>
             <input type="text" className="w-full bg-white p-2 outline-none" placeholder="Enter postal code" />
           </div>
-          <button className="w-full cursor-pointer mt-4 py-4 bg-yellow-500 hover:bg-yellow-400 text-white font-bold transition">
+          <button className="w-full cursor-pointer mt-4 py-4 bg-yellow-500 hover:bg-yellow-600 hover:text-white text-black font-semibold transition">
             GET A QUOTE
           </button>
         </div>
@@ -27,7 +27,7 @@ const ShopEstimate = () => {
           <h1 className="text-xl font-semibold mb-3">Use Coupon Code</h1>
           <p className="text-gray-600 text-sm mb-4">Enter your coupon code if you have one.</p>
           <input type="text" className="w-full bg-white p-2 outline-none mb-2" placeholder="Enter coupon code" />
-          <button className="w-[70%] cursor-pointer py-4 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold transition">
+          <button className="w-[70%] cursor-pointer py-3.5 mt-3 bg-yellow-500 hover:bg-yellow-600 hover:text-white text-black font-semibold transition">
             APPLY COUPON
           </button>
         </div>
@@ -62,7 +62,7 @@ const ShopEstimate = () => {
             <span>Grand Total</span>
             <span>$280</span>
           </div>
-          <button className="w-full cursor-pointer py-4 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold transition">
+          <button className="w-full cursor-pointer py-4 bg-yellow-500 hover:bg-yellow-600 hover:text-white text-black font-semibold transition">
             PROCEED TO CHECKOUT
           </button>
         </div>

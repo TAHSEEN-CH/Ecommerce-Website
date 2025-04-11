@@ -1,21 +1,30 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import "./App.css";
+import "animate.css";
 
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Shop from "./Pages/Shop";
-import Blog from "./Pages/Blog";
 import Contact from "./Pages/Contact";
 import Navbar from "./Components/Navbar"; // Ensure Navbar is imported
 import Footer from "./Components/Footer"; // Ensure Footer is imported
 import Cart from "./Components/ShopOtherPages/Cart";
-import ShopCheckout from "./Components/ShopOtherPages/ShopCheckout";
-import Whishlist from "./Components/ShopOtherPages/Whishlist";
-import EmptyCard from "./Components/ShopOtherPages/EmptyCard";
-import ProductSlider from "./Pages/Single Product/ProductSlider";
-import TeamPage from "./Pages/TeamPage";
-import AddProduct from "./Components/AddProduct";
-import AddUser from "./Components/ADDuser";
+import SingleProduct from "./Pages/SingleProduct";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import NotPage from "./Pages/NotPage";
+import FaqPage from "./Pages/FaqPage";
+import ComeSoon from "./Pages/ComeSoon";
+import BlogGrid from "./Pages/BlogGrid";
+import BlogList from "./Pages/BlogList";
+import SingleBlog from "./Pages/SingleBlog";
+import ShopColumn from "./Pages/ShopColumn";
+import ShopColumnSecond from "./Pages/ShopColumnSecond";
+import AddProduct from "./Pages/AddProduct";
+import AddUser from "./Pages/ADDuser";
+import AdminPanel from "./Pages/AdminPanel";
+import Dashboard from "./Pages/Dashboard";
+import Products from "./Pages/Products";
+import Users from "./Pages/Users";
 
 
 
@@ -36,17 +45,28 @@ const router = createBrowserRouter([{
   children:[
     {path:"/" ,element:<Home/>},
     {path:"/about" ,element:<About/>},
+    {path:"/privacypolicy" ,element:<PrivacyPolicy/>},
+    {path:"/notpage" ,element:<NotPage/>},
+    {path:"/faqpage" ,element:<FaqPage/>},
+    {path:"/comesoon" ,element:<ComeSoon/>},
+    {path:"/bloggrid" ,element:<BlogGrid/>},
+    {path:"/bloglist" ,element:<BlogList/>},
+    {path:"/singleblog" ,element:<SingleBlog/>},
+    {path:"/shopcolumn" ,element:<ShopColumn/>},
+    {path:"/shopcolumnsecond" ,element:<ShopColumnSecond/>},
+
     {path:"/shop" ,element:<Shop/>},
-    {path:"/blog" ,element:<Blog/>},
+    
     {path:"/contact" ,element:<Contact/>},
     {path:"/cart", element:<Cart/>},
-    {path:"/checkout",element:<ShopCheckout/>},
-    {path:"/whishlist",element:<Whishlist/>},
-    {path:"/emptyCard",element:<EmptyCard/>},
-    {path:"/productslider",element:<ProductSlider/>},
-    // {path:"/teampage",element:<TeamPage/>}
-    {path:"/addproduct",element:<AddProduct/>},
-    {path:"/adduser",element:<AddUser/>}
+    {path:"/singleproduct", element:<SingleProduct/>},
+    {path:"/addproduct", element:<AddProduct/>},
+    {path:"/adduser", element:< AddUser/>},
+    {path:"/adminpanel", element:< AdminPanel/>},
+    {path:"/dashboard", element:< Dashboard/>},
+    {path:"/products", element:< Products/>},
+    {path:"/users", element:< Users/>}
+    // {path:"/about", element:<About/>}
   ]
 }])
 

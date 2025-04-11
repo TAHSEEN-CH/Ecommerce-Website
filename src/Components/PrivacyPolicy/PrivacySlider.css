@@ -1,0 +1,16 @@
+@keyframes marquee-alternate {
+    0% {
+      transform: translateX(0%);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  .animate-marquee-alternate {
+    animation: marquee-alternate 18s ease-in-out infinite alternate;
+  }
+  

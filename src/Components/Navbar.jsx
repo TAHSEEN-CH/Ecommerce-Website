@@ -240,7 +240,7 @@ const Navbar = () => {
               onClick={() => MovetoADtoCart()}
             />
             <span className="relative  ">
-              <span className="absolute">
+              <span className="absolute top-[-13px]">
                 {/* Menu Toggle Button */}
                 {!menu && (
                   <IoIosMenu
@@ -250,10 +250,10 @@ const Navbar = () => {
                 )}
               </span>
               {/* Close Button */}
-              <span className="flex justify-end absolute top-0 ">
+              <span className="flex justify-end absolute top-[-10px]  hover:text-gray-700 ">
                 {menu && (
                   <RxCross1
-                    className="text-3xl cursor-pointer"
+                    className="text-3xl lg:hidden cursor-pointer"
                     onClick={toggleMenu}
                   />
                 )}

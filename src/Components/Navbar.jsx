@@ -11,17 +11,22 @@ import { FaXTwitter } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx"; // Added close icon
 import ShopPlus from "./ShopPlus";
+import { AiOutlineMinus } from "react-icons/ai";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const MovetoADtoCart=()=>{
+  const MovetoADtoCart = () => {
     navigate("/adtoCart");
-  }
-  
+  };
+
   const [menu, setMenu] = useState(false);
   const [shopLinksVisible, setShopLinksVisible] = useState(false); // Fixed typo
   const [blogshow, setblogshow] = useState(false);
+  // it show bog 4 page 
   const [plusShop, setplusShop] = useState(false);
+  // it show shop 4 page 
+
+  // Shop Page STATES 
 
   // shops 1 links States
   const [Shop1State, setShop1State] = useState(false);
@@ -31,6 +36,19 @@ const Navbar = () => {
   const [Shop4State, setShop4State] = useState(false);
   // shop  links 4 state
   const [Shop5State, setShop5State] = useState(false);
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  // Blog Page STATES 
+
+  // shops 1 links States
+  const [blog1State, setblog1state] = useState(false);
+  const [blog2State, setblog2state] = useState(false);
+  const [blog3State, setblog3state] = useState(false);
+  const [blog4State, setblog4state] = useState(false);
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 
   // Blog link state
   const [blogplus, setblogplus] = useState(false);
@@ -38,29 +56,86 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenu(!menu);
   };
-  const ShopToggle = () => {
-    setplusShop(!plusShop);
-  };
-  const ShopTogglle = () => {
-    setShop1State(!Shop1State);
-  };
-  const Togle3 = () => {
-    setShop3State(!Shop3State);
-  };
-  const Togle4 = () => {
-    setShop4State(!Shop4State);
-  };
-  const Togle5 = () => {
-    setShop5State(!Shop5State);
-  };
-  const Togle6 = () => {
-    setShop5State(!Shop5State);
-  };
-  // Blog LInk funciton
 
-  const BlogToggle = () => {
-    setblogplus(!blogplus);
+  // Main Shop function 
+  const MainShopfunc = () => {
+    setplusShop(!plusShop);
+    setblogplus(false);
+    // All State of Blog becomes false when Shop page is click 
+    setblog1state(false);
+    setblog2state(false);
+    setblog3state(false);
+    setblog4state(false);
   };
+  // His Shop Child 
+  const shopChild1 = () => {
+    setShop1State(!Shop1State);
+    setShop3State(false);
+    setShop5State(false);
+    setShop4State(false);
+
+
+  };
+  const shopChild2 = () => {
+
+    setShop3State(!Shop3State);
+    setShop5State(false);
+    setShop4State(false);
+    setShop1State(false);
+  };
+  const shopChild3 = () => {
+    setShop4State(!Shop4State);
+    setShop3State(false);
+    setShop5State(false);
+    setShop1State(false);
+
+  };
+  const shopChild4 = () => {
+    setShop5State(!Shop5State);
+    setShop4State(false);
+    setShop3State(false);
+    setShop1State(false);
+  };
+
+  // Blog Main funciton
+
+  const MainBlogfunc = () => {
+    setblogplus(!blogplus);
+    setplusShop(false);
+    // All States of Shop Page becomes false when the Blog page is clicked 
+    setShop1State(false);
+    setShop3State(false);
+    setShop5State(false);
+    setShop4State(false);
+  };
+    // His Blog Child 
+    const childBlog1 = () => {
+
+      setblog1state(!blog1State);
+      setblog2state(false);
+      setblog3state(false);
+      setblog4state(false);  
+    };
+    const childBlog2 = () => {
+  
+      setblog1state(false);
+      setblog2state(!blog2State);
+      setblog3state(false);
+      setblog4state(false);  
+    };
+    const childBlog3 = () => {
+      setblog1state(false);
+      setblog2state(false);
+      setblog3state(!blog3State);
+      setblog4state(false);  
+  
+    };
+    const childBlog4 = () => {
+      setblog1state(false );
+      setblog2state(false);
+      setblog3state(false);
+      setblog4state(!blog4State);  
+    };
 
   const shopLinks = [
     {
@@ -160,30 +235,37 @@ const Navbar = () => {
             <FaHeart className="cursor-pointer hover:text-yellow-300" />
 
             {/* ad to Cart Page Render Icond is here  */}
-            <BsFillBasketFill className="cursor-pointer hover:text-yellow-300"
-            
-            onClick={()=>MovetoADtoCart()}
+            <BsFillBasketFill
+              className="cursor-pointer hover:text-yellow-300"
+              onClick={() => MovetoADtoCart()}
             />
-            {/* Menu Toggle Button */}
-            <IoIosMenu
-              className="text-3xl lg:hidden cursor-pointer hover:text-gray-700"
-              onClick={toggleMenu}
-            />
+            <span className="relative  ">
+              <span className="absolute">
+                {/* Menu Toggle Button */}
+                {!menu && (
+                  <IoIosMenu
+                    className="text-3xl lg:hidden cursor-pointer hover:text-gray-700"
+                    onClick={toggleMenu}
+                  />
+                )}
+              </span>
+              {/* Close Button */}
+              <span className="flex justify-end absolute top-0 ">
+                {menu && (
+                  <RxCross1
+                    className="text-3xl cursor-pointer"
+                    onClick={toggleMenu}
+                  />
+                )}
+              </span>
+            </span>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu (Slide-in effect) */}
       {menu && (
-        <div className=" z-1 left-0 w-[80vw] md:w-[60vw] lg:hidden min-h-screen  bg-gray-200 shadow-lg transition-transform transform translate-x-0 p-4 overflow-auto">
-          {/* Close Button */}
-          <div className="flex justify-end">
-            <RxCross1
-              className="text-3xl cursor-pointer"
-              onClick={toggleMenu}
-            />
-          </div>
-
+        <div className=" left-0 w-full md:w-[60vw] lg:hidden h-screen absolute top-20 z-[50] overflow-y-auto   bg-red-500 shadow-lg transition-transform transform translate-x-0 p-4 overflow-auto">
           {/* Menu List */}
           <ul className="flex flex-col justify-center text-xl gap-2 mt-6">
             <li className="flex justify-between items-center p-1 border-b border-gray-400 hover:text-white transition duration-300">
@@ -199,28 +281,39 @@ const Navbar = () => {
             </li>
 
             <li
-              onClick={() => ShopToggle()}
-              className="flex justify-between  items-center p-1 border-b border-gray-400 hover:text-yellow font-bold transition duration-300"
+              onClick={() => MainShopfunc()}
+              className="flex justify-between relative  items-center p-1 border-b border-gray-400 hover:text-yellow font-bold transition duration-300"
             >
               <Link to="#" className="">
                 Shop
               </Link>
-              <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+              {!plusShop && (
+                <BsPlusSquare className="absolute top-2 right-0 text-xl hover:rotate-90 transition-transform duration-300" />
+              )}
+              {plusShop && (
+                <AiOutlineMinus className="absolute top-2 right-0  text-xl hover:rotate-90 transition-transform duration-300" />
+              )}
             </li>
             {plusShop && (
               <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                 <li
-                  onClick={() => ShopTogglle()}
+                  onClick={() => shopChild1()}
                   className="flex justify-between hover:bg-amber-400  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to="">Shop Page</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  
+                  {!Shop1State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {Shop1State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
                 {/* Shop Pages LInk  */}
                 {Shop1State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
-                      <Link to="">page1</Link>
+                      <Link to="">Jahanum1</Link>
                     </li>
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">Page2</Link>
@@ -233,16 +326,21 @@ const Navbar = () => {
 
                 {/* shops state 4  */}
                 <li
-                  onClick={() => Togle3()}
+                  onClick={() => shopChild2()}
                   className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to=""> Product Details Page</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  {!Shop3State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {Shop3State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
                 {Shop3State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
-                      <Link to="">page1</Link>
+                      <Link to="">Jahanum2</Link>
                     </li>
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">Page2</Link>
@@ -255,16 +353,21 @@ const Navbar = () => {
 
                 {/* shops state 4  */}
                 <li
-                  onClick={() => Togle4()}
+                  onClick={() => shopChild3()}
                   className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to="">Single Product Page</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  {!Shop4State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {Shop4State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
                 {Shop4State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
-                      <Link to="">page1</Link>
+                      <Link to="">Jahanum3</Link>
                     </li>
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">Page2</Link>
@@ -276,16 +379,21 @@ const Navbar = () => {
                 )}
                 {/* shops state 4  */}
                 <li
-                  onClick={() => Togle5()}
+                  onClick={() => shopChild4()}
                   className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to="">Other Pages</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  {!Shop5State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {Shop5State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
                 {Shop5State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
-                      <Link to="">page1</Link>
+                      <Link to="">Jahanum4</Link>
                     </li>
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">Page2</Link>
@@ -300,25 +408,39 @@ const Navbar = () => {
 
             {/* Blog LINK  */}
             <li
-              onClick={() => BlogToggle()}
-              className="flex justify-between  items-center p-1 border-b border-gray-400 hover:text-yellow font-bold transition duration-300"
+              onClick={() => MainBlogfunc()}
+              className=" relative flex justify-between  items-center p-1 border-b border-gray-400 hover:text-yellow font-bold transition duration-300"
             >
               <Link to="#" className="">
                 Blog
               </Link>
-              <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+              {!blogplus && (
+                <BsPlusSquare className=" absolute top-2 right-0  text-xl hover:rotate-90 transition-transform duration-300" />
+              )}
+              {/* {!blogplus &&
+             plusShop(false)           
+                
+              } */}
+              {blogplus && (
+                <AiOutlineMinus className="absolute top-2 right-0  text-xl hover:rotate-90 transition-transform duration-300" />
+              )}
             </li>
             {blogplus && (
               <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                 <li
-                  onClick={() => ShopTogglle()}
+                  onClick={() => childBlog1()}
                   className="flex justify-between hover:bg-amber-400  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to="">Blog Page</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  {!blog1State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {blog1State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
-                {/* Shop Pages LInk  */}
-                {Shop1State && (
+                {/* Blog 1 State  */}
+                {blog1State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">page1</Link>
@@ -332,15 +454,21 @@ const Navbar = () => {
                   </ul>
                 )}
 
-                {/* shops state 4  */}
+                {/* blog 2 page   */}
                 <li
-                  onClick={() => Togle3()}
+                  onClick={() => childBlog2()}
                   className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to=""> Blog Details Page</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  {!blog2State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {blog2State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
-                {Shop3State && (
+                {/* blog 2 state  */}
+                {blog2State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">page1</Link>
@@ -354,15 +482,22 @@ const Navbar = () => {
                   </ul>
                 )}
 
-                {/* shops state 4  */}
+                {/* Blog 3 Page */}
                 <li
-                  onClick={() => Togle4()}
+                  onClick={() => childBlog3()}
                   className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to="">Blog Product Page</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  {!blog3State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {blog3State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
-                {Shop4State && (
+
+                {/* blog 3 state  */}
+                {blog3State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">page1</Link>
@@ -375,15 +510,21 @@ const Navbar = () => {
                     </li>
                   </ul>
                 )}
-                {/* shops state 4  */}
+                {/* Blog 4 Page  */}
                 <li
-                  onClick={() => Togle5()}
+                  onClick={() => childBlog4()}
                   className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to="">Blog Other Pages</Link>
-                  <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  {!blog4State && (
+                    <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
+                  {blog4State && (
+                    <AiOutlineMinus className="text-xl hover:rotate-90 transition-transform duration-300" />
+                  )}
                 </li>
-                {Shop5State && (
+                {/* blog 4 State  */}
+                {blog4State && (
                   <ul className="flex  flex-col gap-1 w-[98%]  ml-3 ">
                     <li className="flex justify-between  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300">
                       <Link to="">page1</Link>
@@ -406,7 +547,7 @@ const Navbar = () => {
             </li>
           </ul>
           {/* Social Icons */}
-          <div className="absolute  bottom-2 flex justify-center items-center w-[90%] ">
+          <div className=" flex justify-center items-center mt-10">
             <ul className="flex justify-around text-xl gap-5 text-white">
               <li className="hover:scale-110 transition-transform duration-300">
                 <Link
@@ -517,7 +658,7 @@ const Navbar = () => {
               <li>
                 <Link className="hover:text-[#F0B100]" to="addproduct">
                   {/* Product Gallery Left */}
-                  Add Product Form 
+                  Add Product Form
                 </Link>
               </li>
               <li>

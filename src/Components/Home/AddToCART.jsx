@@ -4,9 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { IoHeart, IoSearch, IoRefresh } from "react-icons/io5";
-import { FaMinus } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const newproducts = [
   {
@@ -92,9 +90,7 @@ const bestproducts = [
 
 const AddToCART = () => {
   const [count, setcount] = useState(1);
-  const handleIncrease = () => {
-    setcount((prev) => prev + 1);
-  };
+  const handleIncrease = () => setcount((prev) => prev + 1);
   const handleDecrease = () => {
     if (count > 1) setcount((prev) => prev - 1);
   };
@@ -102,8 +98,7 @@ const AddToCART = () => {
   const [nav, setNav] = useState("new");
   const [cartItems, setCartItems] = useState([]);
 
-  const productList =
-    nav === "new" || nav === "onSale" ? newproducts : bestproducts;
+  const productList = nav === "new" || nav === "onSale" ? newproducts : bestproducts;
 
   const handleAddToCart = (product) => {
     setCartItems((prev) => [...prev, product]);
@@ -149,7 +144,8 @@ const AddToCART = () => {
         </ul>
       </nav>
 
-      <div className="py-10 lg:px-15 md:px-8">
+      {/* Swiper Centered */}
+      <div className="py-10 lg:px-15 md:px-8 flex justify-center">
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={0}
@@ -157,7 +153,7 @@ const AddToCART = () => {
           loop={true}
           speed={1100}
           centeredSlides={true}
-          className="overflow-hidden flex justify-center"
+          className="overflow-hidden max-w-[1280px] w-full"
           breakpoints={{
             320: { slidesPerView: 1, centeredSlides: true },
             640: { slidesPerView: 1, centeredSlides: true },
@@ -227,6 +223,7 @@ const AddToCART = () => {
         </Swiper>
       </div>
 
+      {/* Cart & Summary */}
       <div className="flex flex-col lg:flex-row justify-between items-start w-full gap-6 px-4">
         <div className="w-full lg:w-[60%] p-6 mx-auto border mt-10 rounded-lg shadow-sm overflow-x-scroll">
           <h2 className="text-2xl font-bold mb-4">ADD To Cart Details</h2>
@@ -291,13 +288,12 @@ const AddToCART = () => {
         <div className="sticky border border-gray-400 top-28 h-fit p-5 py-10 flex flex-col gap-6 bg white shadow-md rounded-md w-full sm:w-[300px] mx-auto sm:mx-0 mt-10">
           <h3 className="font-bold text-2xl">Your Details</h3>
           <div className="flex justify-center items-center">
-            <h3></h3>
             <div className="font-semibold bg-red-500 text-white px-3 py-2 rounded hover:bg-red-400 text-lg">
               Total Items: {cartItems.length}
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <div className="font-semibold bg-red-500 text-white px-3 py-2 rounded  hover:bg-red-400 text-lg">
+            <div className="font-semibold bg-red-500 text-white px-3 py-2 rounded hover:bg-red-400 text-lg">
               Total Price: ${calculateTotalPrice()}
             </div>
           </div>

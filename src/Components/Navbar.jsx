@@ -265,7 +265,7 @@ const Navbar = () => {
 
       {/* Mobile Menu (Slide-in effect) */}
       {menu && (
-        <div className=" left-0 w-full md:w-[60vw] lg:hidden h-screen absolute top-20 z-[50] overflow-y-auto   bg-red-500 shadow-lg transition-transform transform translate-x-0 p-4 overflow-auto">
+        <div className=" left-0 w-full md:w-[60vw] lg:hidden h-screen absolute top-20 z-[50] overflow-y-auto    bg-white shadow-lg transition-transform transform translate-x-0 p-4 overflow-auto">
           {/* Menu List */}
           <ul className="flex flex-col justify-center text-xl gap-2 mt-6">
             <li className="flex justify-between items-center p-1 border-b border-gray-400 hover:text-white transition duration-300">

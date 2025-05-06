@@ -22,11 +22,11 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [shopLinksVisible, setShopLinksVisible] = useState(false); // Fixed typo
   const [blogshow, setblogshow] = useState(false);
-  // it show bog 4 page 
+  // it show bog 4 page
   const [plusShop, setplusShop] = useState(false);
-  // it show shop 4 page 
+  // it show shop 4 page
 
-  // Shop Page STATES 
+  // Shop Page STATES
 
   // shops 1 links States
   const [Shop1State, setShop1State] = useState(false);
@@ -38,7 +38,7 @@ const Navbar = () => {
   const [Shop5State, setShop5State] = useState(false);
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  // Blog Page STATES 
+  // Blog Page STATES
 
   // shops 1 links States
   const [blog1State, setblog1state] = useState(false);
@@ -48,8 +48,6 @@ const Navbar = () => {
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
-
   // Blog link state
   const [blogplus, setblogplus] = useState(false);
 
@@ -57,27 +55,24 @@ const Navbar = () => {
     setMenu(!menu);
   };
 
-  // Main Shop function 
+  // Main Shop function
   const MainShopfunc = () => {
     setplusShop(!plusShop);
     setblogplus(false);
-    // All State of Blog becomes false when Shop page is click 
+    // All State of Blog becomes false when Shop page is click
     setblog1state(false);
     setblog2state(false);
     setblog3state(false);
     setblog4state(false);
   };
-  // His Shop Child 
+  // His Shop Child
   const shopChild1 = () => {
     setShop1State(!Shop1State);
     setShop3State(false);
     setShop5State(false);
     setShop4State(false);
-
-
   };
   const shopChild2 = () => {
-
     setShop3State(!Shop3State);
     setShop5State(false);
     setShop4State(false);
@@ -88,7 +83,6 @@ const Navbar = () => {
     setShop3State(false);
     setShop5State(false);
     setShop1State(false);
-
   };
   const shopChild4 = () => {
     setShop5State(!Shop5State);
@@ -102,40 +96,37 @@ const Navbar = () => {
   const MainBlogfunc = () => {
     setblogplus(!blogplus);
     setplusShop(false);
-    // All States of Shop Page becomes false when the Blog page is clicked 
+    // All States of Shop Page becomes false when the Blog page is clicked
     setShop1State(false);
     setShop3State(false);
     setShop5State(false);
     setShop4State(false);
   };
-    // His Blog Child 
-    const childBlog1 = () => {
-
-      setblog1state(!blog1State);
-      setblog2state(false);
-      setblog3state(false);
-      setblog4state(false);  
-    };
-    const childBlog2 = () => {
-  
-      setblog1state(false);
-      setblog2state(!blog2State);
-      setblog3state(false);
-      setblog4state(false);  
-    };
-    const childBlog3 = () => {
-      setblog1state(false);
-      setblog2state(false);
-      setblog3state(!blog3State);
-      setblog4state(false);  
-  
-    };
-    const childBlog4 = () => {
-      setblog1state(false );
-      setblog2state(false);
-      setblog3state(false);
-      setblog4state(!blog4State);  
-    };
+  // His Blog Child
+  const childBlog1 = () => {
+    setblog1state(!blog1State);
+    setblog2state(false);
+    setblog3state(false);
+    setblog4state(false);
+  };
+  const childBlog2 = () => {
+    setblog1state(false);
+    setblog2state(!blog2State);
+    setblog3state(false);
+    setblog4state(false);
+  };
+  const childBlog3 = () => {
+    setblog1state(false);
+    setblog2state(false);
+    setblog3state(!blog3State);
+    setblog4state(false);
+  };
+  const childBlog4 = () => {
+    setblog1state(false);
+    setblog2state(false);
+    setblog3state(false);
+    setblog4state(!blog4State);
+  };
 
   const shopLinks = [
     {
@@ -301,7 +292,7 @@ const Navbar = () => {
                   className="flex justify-between hover:bg-amber-400  items-center p-1 border-b border-gray-300 hover:text-yellow  transition duration-300"
                 >
                   <Link to="">Shop Page</Link>
-                  
+
                   {!Shop1State && (
                     <BsPlusSquare className="text-xl hover:rotate-90 transition-transform duration-300" />
                   )}

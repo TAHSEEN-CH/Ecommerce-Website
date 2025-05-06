@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
-.testimonial{
-    background-image: url("/public/Home/testimonial-bg.jpg");
-    background-position: center;
-    background-size: cover;
+.testimonial {
+  background-image: url("/Home/testimonial-bg.jpg");
+  background-position: center;
+  background-size: cover;
 }
 
 .swiper-pagination-bullet {
-    width: 16px !important;
-    height: 10px !important;
-    background-color: #393939 !important;
-    border-radius: 30px !important;
-  }
-  
-  .swiper-pagination-bullet-active {
-    background-color: #f1ac06 !important;
-    border-color: #f1ac06 !important;
-    width: 26px !important;
-  }
+  width: 16px !important;
+  height: 10px !important;
+  background-color: #393939 !important;
+  border-radius: 30px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f1ac06 !important;
+  border-color: #f1ac06 !important;
+  width: 26px !important;
+}

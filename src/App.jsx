@@ -6,8 +6,8 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Shop from "./Pages/Shop";
 import Contact from "./Pages/Contact";
-import Navbar from "./Components/Navbar"; // Ensure Navbar is imported
-import Footer from "./Components/Footer"; // Ensure Footer is imported
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 import Cart from "./Components/ShopOtherPages/Cart";
 import SingleProduct from "./Pages/SingleProduct";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
@@ -48,13 +48,11 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
-      // {path:"adtoCart",element:<AddToCART/>},
-      { path: "adtoCart", element: <AddToCART /> },
+      { path: "/adtoCart", element: <AddToCART /> },
       { path: "/privacypolicy", element: <PrivacyPolicy /> },
-      { path: "/notpage", element: <NotPage /> },
-      { path: "/faqpage", element: <FaqPage /> },
-      { path: "/comesoon", element: <ComeSoon /> },
-      { path: "/bloggrid", element: <BlogGrid /> },
+      { path: "/faq", element: <FaqPage /> },
+      { path: "/comesoon", element: <ComeSoon /> }, //this one
+      { path: "/blog", element: <BlogGrid /> },
       { path: "/bloglist", element: <BlogList /> },
       { path: "/singleblog", element: <SingleBlog /> },
       { path: "/shopcolumn", element: <ShopColumn /> },
@@ -77,6 +75,7 @@ const router = createBrowserRouter([
       { path: "/about", element: <About /> },
     ],
   },
+  { path: "*", element: <NotPage /> },
 ]);
 
 function App() {
@@ -84,6 +83,3 @@ function App() {
 }
 
 export default App;
-
-
-

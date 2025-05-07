@@ -63,10 +63,11 @@ const Users = () => {
 
           {/* Sidebar */}
           <aside
-            className={`absolute top-0 left-0 z-40 h-full lg:h-full w-64 md:w-80 lg:w-100 px-2 py-14 bg-gray-900 text-white transform transition-transform duration-300 ease-in-out
-              ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-              lg:translate-x-0 lg:static`}
+            className={`fixed top-0 left-0 z-40 h-full w-64 bg-gray-900 text-white transform transition-transform duration-300 ease-in-out
+    ${isOpen ? "translate-x-0" : "-translate-x-full"} 
+    lg:static lg:translate-x-0 lg:block`}
           >
+
             <div className="p-4 border-b border-gray-800 flex flex-col lg:flex-row justify-between items-center">
               <img
                 src="https://tailwindflex.com/images/logo.svg"
@@ -151,8 +152,9 @@ const Users = () => {
               <CiCirclePlus className="mr-2 text-[20px] font-bold" /> Add User
             </button>
           </div>
-          <div className="overflow-x-auto">
-            <table className="hidden md:table w-full border-collapse border border-gray-300">
+          <div className="overflow-x-auto w-full">
+            <table className="min-w-[700px] w-full border-collapse border border-gray-300">
+
               <thead>
                 <tr className="bg-gray-100">
                   <th className="p-4 text-left">Profile</th>
@@ -203,42 +205,23 @@ const Users = () => {
             {/* Mobile View */}
             <div className="md:hidden space-y-4">
               {users.map((user) => (
-                <div key={user.id} className="border p-4 rounded-lg shadow-md">
-                  <div className="flex flex-col text-center items-center space-x-4">
-                    <img
-                      src={user.image}
-                      alt={user.firstName}
-                      className="h-12 w-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <p className="text-gray-800 font-semibold">
-                        {user.firstName} {user.lastName}
-                      </p>
-                      <p className="text-gray-600 text-sm">{user.email}</p>
-                      <p className="text-gray-600 text-sm">{user.number}</p>
-                    </div>
-                  </div>
-                  <div className="mt-3 text-right">
-                    <button
-                      onClick={() => handleToggle(user.id)}
-                      className="text-gray-600 hover:text-gray-900"
-                    >
-                      <FaEllipsisV />
-                    </button>
-                    {activeUserId === user.id && (
-                      <div className="absolute right-0 mt-2 w-24 bg-white border border-gray-200 shadow-lg rounded-md p-2">
-                        <button className="block w-full text-left px-3 py-1 text-gray-700 hover:bg-gray-100">
-                          Edit
-                        </button>
-                        <button className="block w-full text-left px-3 py-1 text-gray-700 hover:bg-gray-100">
-                          Remove
-                        </button>
-                      </div>
-                    )}
+                <div key={user.id} className="border p-4 rounded-lg shadow-md flex flex-col items-center gap-2 text-center">
+                  <img
+                    src={user.image}
+                    alt={user.firstName}
+                    className="h-14 w-14 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="text-gray-800 font-semibold">
+                      {user.firstName} {user.lastName}
+                    </p>
+                    <p className="text-gray-600 text-sm">{user.email}</p>
+                    <p className="text-gray-600 text-sm">{user.number}</p>
                   </div>
                 </div>
               ))}
             </div>
+
           </div>
         </div>
       </div>
@@ -250,7 +233,8 @@ const Users = () => {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-150 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white w-full max-w-[600px] p-6 rounded-xl shadow-lg relative">
+          <div className="bg-white w-full max-w-[90%] md:max-w-[600px] p-6 rounded-xl shadow-lg relative">
+
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-3 right-3 text-xl font-bold text-gray-600 hover:text-red-500 cursor-pointer"

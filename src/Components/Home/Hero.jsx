@@ -61,12 +61,12 @@ const Hero = () => {
         {currentIndex === 0 && (
           <>
             <h1
-              className={`text-gray-700 text-3xl lg:text-7xl md:text-6xl font-semibold animate__animated ${animation}`}
+              className={`text-gray-700 text-xl lg:text-7xl md:text-4xl font-semibold animate__animated ${animation}`}
             >
               Camera Lens
             </h1>
             <h2
-              className={`text-gray-700 text-3xl lg:text-7xl md:text-6xl font-semibold animate__animated ${animation}`}
+              className={`text-gray-700 text-xl lg:text-7xl md:text-4xl font-semibold animate__animated ${animation}`}
             >
               & Photo
             </h2>
@@ -75,12 +75,12 @@ const Hero = () => {
         {currentIndex === 1 && (
           <>
             <h1
-              className={`text-gray-700 text-3xl lg:text-7xl md:text-6xl font-semibold animate__animated ${animation} animate__duration-1000 animate__delay-500`}
+              className={`text-gray-700 text-xl lg:text-7xl md:text-4xl font-semibold animate__animated ${animation} animate__duration-1000 animate__delay-500`}
             >
               Home Security
             </h1>
             <h2
-              className={`text-gray-700 text-3xl lg:text-7xl md:text-6xl font-semibold animate__animated ${animation} animate__duration-1500 animate__delay-1000`}
+              className={`text-gray-700 text-xl lg:text-7xl md:text-4xl font-semibold animate__animated ${animation} animate__duration-1500 animate__delay-1000`}
             >
               Camera 360°
             </h2>
@@ -90,7 +90,7 @@ const Hero = () => {
           Avail 15% off on Making Charges for all Items
         </p>
         <Link to='/shop'>
-          <button className="relative z-10 text-white bg-yellow-500 text-xl mt-2 px-2 py-1 md:py-3 md:px-7 lg:py-3 lg:px-7 lg:mt-7 md:mt-6 cursor-pointer hover:bg-yellow-600 transition">
+          <button className="relative z-10 text-white bg-yellow-500 lg:text-xl mt-2 px-2 py-1 md:py-3 md:px-7 lg:py-3 lg:px-7 lg:mt-7 md:mt-6 cursor-pointer hover:bg-yellow-600 transition">
             Shop Now
           </button>
         </Link>

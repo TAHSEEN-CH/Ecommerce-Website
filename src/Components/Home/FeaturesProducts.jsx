@@ -74,7 +74,7 @@ const product = [
 const FeaturesProducts = () => {
   return (
     <div className="px-6 lg:px-25 py-25">
-      <h1 className="text-center text-gray-800 text-5xl max-md:text-4xl sm:text-nowrap font-bold pt-15 ">
+      <h1 className="text-center text-gray-800 text-xl md:text-4xl sm:text-nowrap font-bold pt-15 ">
         Features Products
       </h1>
       <p className="text-center text-lg max-md:text-md  font-semibold text-gray-700 mt-5 pb-12">

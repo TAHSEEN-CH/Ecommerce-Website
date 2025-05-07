@@ -16,7 +16,7 @@ const DigitalGaming = () => {
 
             {/* Text Section */}
             <div className='lg:pe-1'>
-                <h2 className="text-3xl md:text-4xl lg:font-bold font-semibold mb-4 md:mt-4 font-serif  text-gray-800">Digital Gaming Headset</h2>
+                <h2 className="text-xl md:text-2xl lg:font-bold font-semibold mb-4 md:mt-4 font-serif  text-gray-800">Digital Gaming Headset</h2>
                 <span className="text-xl text-gray-600 line-through">$330.00 </span>  <span>-</span>
                 <span className='text-yellow-500 text-2xl font-semibold ms-2'>$230.00</span>
                 <p className="text-gray-600 text-xl font-serif max-sm:text-lg mt-4">

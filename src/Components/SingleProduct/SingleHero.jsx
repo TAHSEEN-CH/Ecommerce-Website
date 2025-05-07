@@ -12,7 +12,7 @@ const SingleHero = () => {
       "/Home/product(4).jpg",
       "/Home/product(5).jpg",
       "/Home/product(1).jpg",
-   
+
     ],
   };
 
@@ -92,7 +92,7 @@ const SingleHero = () => {
         </div>
 
         {/* Social Media Icons */}
-        <div className="flex gap-3 mt-5 text-gray-600 text-lg cursor-pointer border-b lg:w-3xl pb-5">
+        <div className="flex gap-3 mt-5 text-gray-600 text-lg cursor-pointer border-b lg:w-xl pb-5">
           <FaFacebookF className="hover:text-yellow-500 transition" />
           <FaTwitter className="hover:text-yellow-500 transition" />
           <FaGoogle className="hover:text-yellow-500 transition" />

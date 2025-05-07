@@ -32,7 +32,7 @@ let cardData = [
               <h3 className="font-medium leading-[26px] w-[104px] text-[20px]">
                 {item.productName}
               </h3>
-              <Link to="/adtoCart" className="underline hover:text-yellow-500">
+              <Link to="/shop" className="underline hover:text-yellow-500">
                 Shop Now
               </Link>
             </div>

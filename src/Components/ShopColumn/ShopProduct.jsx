@@ -15,37 +15,48 @@ const newproducts = [
 
 const ShopProduct = () => {
   const { addToCart } = useCart();
-  const [products, setProducts] = useState(newproducts);
   const [sortType, setSortType] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 9; // Har page par 9 products honge
+  const postsPerPage = 6; // easier to test with 4 per page
+  const [products, setProducts] = useState(newproducts);
 
-  // Sorting function
+  const totalPages = Math.ceil(products.length / postsPerPage);
+
   const handleSortChange = (e) => {
     const sortValue = e.target.value;
     setSortType(sortValue);
-    let sortedProducts = [...newproducts];
+    let sorted = [...newproducts];
 
     if (sortValue === "low-to-high") {
-      sortedProducts.sort((a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1)));
+      sorted.sort((a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1)));
     } else if (sortValue === "high-to-low") {
-      sortedProducts.sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)));
+      sorted.sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)));
     }
 
-    setProducts(sortedProducts);
+    setProducts(sorted);
+    setCurrentPage(1); // Reset to page 1 on sort
+  };
+
+  const currentProducts = products.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
+  );
+
+  const handlePageClick = (pageNum) => {
+    setCurrentPage(pageNum);
   };
 
   return (
     <div className="px-4 py-3 mt-8">
-      {/* Header Section */}
-      <div className="flex flex-col sm:flex-row md:flex-row justify-between items-center bg-gray-50 py-4 px-4 max-w-[1150px] mx-auto gap-3 sm:gap-0">
-        <p className="text-gray-800 font-medium text-sm md:text-base text-center sm:text-left">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-center bg-gray-50 py-4 px-4 max-w-[1150px] mx-auto gap-3">
+        <p className="text-gray-800 font-medium text-sm">
           There Are {products.length} Products
         </p>
         <select
           value={sortType}
           onChange={handleSortChange}
-          className="border border-gray-500 rounded-md px-3 py-1.5 text-sm text-gray-600 focus:outline-none focus:ring-1 focus:ring-gray-300 w-full sm:w-auto"
+          className="border border-gray-500 rounded-md px-3 py-1.5 text-sm text-gray-600"
         >
           <option value="relevance">Relevance</option>
           <option value="low-to-high">Price: Low to High</option>
@@ -53,58 +64,55 @@ const ShopProduct = () => {
         </select>
       </div>
 
-
-      {/* Product Grid */}
-      <div className="py-10 lg:px-15 md:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.slice(0, postsPerPage).map((product) => (
-          <div key={product.id} className="px-2 w-full max-w-xs mx-auto group pb-6 relative overflow-hidden">
+      {/* Products */}
+      <div className="py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {currentProducts.map((product) => (
+          <div key={product.id} className="w-full max-w-xs mx-auto group pb-6 relative overflow-hidden">
             <div className="bg-gray-100 relative overflow-hidden">
-              <img src={product.image} alt={product.title} className="bg-gray-100 w-full h-full object-contain transition duration-500 transform group-hover:rotate-6 group-hover:scale-90 group-hover:opacity-0" />
-              <img src={product.hoverimage} alt={product.title} className="bg-gray-100 w-full h-full object-contain absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition duration-500 transform group-hover:scale-110" />
-
-              <span className="bg-black rounded-full text-md text-white absolute font-semibold left-2 px-4.5 py-0.5 top-2">Sale</span>
-              <span className=" bg-yellow-500 rounded-full text-md text-white absolute font-semibold left-3 top-10 px-4 ">{product.priceoff}</span>
-              <button className="bg-white p-3 rounded-full absolute duration-300 hover:bg-yellow-500 right-2 top-2 transition">
-                <IoHeart className="h-5 text-gray-500 w-5 duration-300 hover:text-white transition" />
+              <img src={product.image} className="w-full h-full object-contain transition duration-500 group-hover:scale-90 group-hover:opacity-0" />
+              <img src={product.hoverimage} className="w-full h-full object-contain absolute top-0 left-0 opacity-0 group-hover:opacity-100 transition duration-500 group-hover:scale-110" />
+              <span className="bg-black text-white text-xs px-2 py-0.5 rounded-full absolute top-2 left-2">Sale</span>
+              <button className="bg-white p-2 rounded-full absolute right-2 top-2 hover:bg-yellow-500 transition">
+                <IoHeart className="text-gray-600 hover:text-white" />
               </button>
-              <div className="flex flex-col absolute duration-300 gap-2 group-hover:opacity-100 opacity-0 right-2 top-15 transition">
-                <button className="bg-white p-3 rounded-full duration-300 hover:bg-yellow-500 transition">
-                  <IoSearch className="h-5 text-gray-500 w-5 duration-300 hover:text-white transition" />
+              <div className="absolute right-2 top-14 space-y-2 opacity-0 group-hover:opacity-100 transition">
+                <button className="bg-white p-2 rounded-full hover:bg-yellow-500 transition">
+                  <IoSearch className="text-gray-600 hover:text-white" />
                 </button>
-                <button className="bg-white p-3 rounded-full duration-300 hover:bg-yellow-500 transition">
-                  <IoRefresh className="h-5 text-gray-500 w-5 duration-300 hover:text-white transition" />
+                <button className="bg-white p-2 rounded-full hover:bg-yellow-500 transition">
+                  <IoRefresh className="text-gray-600 hover:text-white" />
                 </button>
               </div>
-              <button
-
-                onClick={() => addToCart(product)}
-                className="w-[80%] bg-white rounded-full text-black -translate-x-1/2 absolute bottom-2 group-hover:opacity-100 hover:bg-yellow-500 hover:text-white left-1/2 opacity-0 px-6 py-2 transform transition hover:cursor-pointer duration-300"
-              >
+              <button onClick={() => addToCart(product)} className="w-[80%] bg-white rounded-full text-black absolute bottom-2 left-1/2 -translate-x-1/2 px-4 py-2 opacity-0 group-hover:opacity-100 hover:bg-yellow-500 hover:text-white transition">
                 Add To Cart
               </button>
             </div>
-            <h3 className="text-center text-gray-800 text-lg font hover:text-yellow-500 mt-4 mb-1">{product.title}</h3>
-            <div className="text-center">
-              <span className="text-xl text-yellow-500 font-bold">{product.price}</span>
-            </div>
+            <h3 className="text-center mt-4 font-semibold text-gray-800 hover:text-yellow-500">{product.title}</h3>
+            <p className="text-center text-yellow-500 font-bold">{product.price}</p>
           </div>
         ))}
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-center space-x-2">
-        <button
-          className={`px-3 py-2 rounded-full ${currentPage === 1 ? "bg-yellow-500 hover:text-white" : "bg-gray-200"}`}
-          onClick={() => setCurrentPage(1)}
-        >
-          1
-        </button>
-        <button
-          className={`px-3 py-2 rounded-full ${currentPage === 2 ? "bg-yellow-500 hover:text-white" : "bg-gray-200"}`}
-          onClick={() => setCurrentPage(2)}
-        >
-          2
-        </button>
+      <div className="flex justify-center items-center space-x-2 mt-6">
+
+
+        {[...Array(totalPages)].map((_, index) => {
+          const pageNum = index + 1;
+          return (
+            <button
+              key={pageNum}
+              onClick={() => handlePageClick(pageNum)}
+              className={`px-3 py-1.5 rounded-full transition hover:cursor-pointer ${currentPage === pageNum
+                  ? "bg-yellow-500 text-white"
+                  : "bg-gray-200 hover:bg-yellow-400"
+                }`}
+            >
+              {pageNum}
+            </button>
+          );
+        })}
+
       </div>
     </div>
   );

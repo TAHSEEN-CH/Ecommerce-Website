@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "animate.css";
+import { Link } from "react-router-dom";
 
 const AnimatedComponent = ({ currentIndex }) => {
   const [animation, setAnimation] = useState("animate__fadeInUpBig");
@@ -50,9 +51,8 @@ const Hero = () => {
             key={index}
             src={src}
             alt={`Slide ${index + 1}`}
-            className={`absolute w-full h-full object-cover transition-opacity duration-1500 pointer-events-none ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute w-full h-full object-cover transition-opacity duration-1500 pointer-events-none ${index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
           />
         ))}
       </div>
@@ -89,9 +89,11 @@ const Hero = () => {
         <p className="text-gray-700 text-sm md:text-xl lg:text-3xl mt-1 md:mt-5 lg:mt-5 w-[75%]">
           Avail 15% off on Making Charges for all Items
         </p>
-        <button className="relative z-10 text-white bg-yellow-500 text-xl mt-2 px-2 py-1 md:py-3 md:px-7 lg:py-3 lg:px-7 lg:mt-7 md:mt-6 cursor-pointer hover:bg-yellow-600 transition">
-          Shop Now
-        </button>
+        <Link to='/shop'>
+          <button className="relative z-10 text-white bg-yellow-500 text-xl mt-2 px-2 py-1 md:py-3 md:px-7 lg:py-3 lg:px-7 lg:mt-7 md:mt-6 cursor-pointer hover:bg-yellow-600 transition">
+            Shop Now
+          </button>
+        </Link>
       </div>
 
       <div className="absolute inset-0 flex items-center justify-between px-6 md:px-15 lg:px-22 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -117,11 +119,10 @@ const Hero = () => {
             key={index}
             onClick={() => setCurrentIndex(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`w-4 h-4 rounded-full transition cursor-pointer hover:bg-yellow-500 ${
-              index === currentIndex
-                ? "bg-yellow-500"
-                : "border border-gray-600"
-            }`}
+            className={`w-4 h-4 rounded-full transition cursor-pointer hover:bg-yellow-500 ${index === currentIndex
+              ? "bg-yellow-500"
+              : "border border-gray-600"
+              }`}
           ></button>
         ))}
       </div>

@@ -59,6 +59,9 @@ export default function BlogPage() {
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+
+
     const tags = ["Technology", "Innovation", "Web Design", "React", "Development", "Electronics"];
 
     return (
@@ -149,14 +152,14 @@ export default function BlogPage() {
             <main className="lg:col-span-3 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Blog Posts */}
-                    {posts.map((post) => (
+                    {currentPosts.map((post) => (
                         <div key={post.id} className="bg-white shadow-md rounded-lg overflow-hidden">
                             <img src={post.image} alt={post.title} className="w-full h-62 object-cover" />
                             <div className="p-4">
                                 <h2 className="text-xl font-bold hover:text-yellow-500">{post.title}</h2>
                                 <p className="mt-2 text-gray-600">{post.description}</p>
                                 <Link to={`/singleblog/${post.id}`}>
-                                <button className="mt-4 bg-black text-white px-4 py-2 hover:bg-gray-700">Read More</button>
+                                    <button className="mt-4 bg-black text-white px-4 py-2 hover:bg-gray-700">Read More</button>
                                 </Link>
                             </div>
                         </div>
@@ -184,19 +187,18 @@ export default function BlogPage() {
 
                 {/* Pagination */}
                 <div className="flex justify-center space-x-2">
-                    <button
-                        className={`px-3 py-2 rounded-full ${currentPage === 1 ? "bg-yellow-500" : "bg-gray-200"}`}
-                        onClick={() => setCurrentPage(1)}
-                    >
-                        1
-                    </button>
-                    <button
-                        className={`px-3 py-2 rounded-full ${currentPage === 2 ? "bg-yellow-500" : "bg-gray-200"}`}
-                        onClick={() => setCurrentPage(2)}
-                    >
-                        2
-                    </button>
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <button
+                            key={index + 1}
+                            onClick={() => setCurrentPage(index + 1)}
+                            className={`px-3 py-2 rounded-full hover:cursor-pointer ${currentPage === index + 1 ? "bg-yellow-500 text-white" : "bg-gray-200"
+                                }`}
+                        >
+                            {index + 1}
+                        </button>
+                    ))}
                 </div>
+
             </main>
         </div>
     );

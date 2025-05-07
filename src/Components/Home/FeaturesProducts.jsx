@@ -114,9 +114,9 @@ const FeaturesProducts = () => {
                     <IoRefresh className="h-5 text-gray-500 w-5 duration-500 hover:text-white transition" />
                   </button>
                 </div>
-                <Link to="/adtoCart">
+                <Link to="/shop">
                   <button className="bg-yellow-500 rounded-full text-black -translate-x-1/2 absolute bottom-2 duration-500 group-hover:opacity-100 hover:text-yellow-500 hover:bg-white left-1/2 opacity-0 px-3 py-2 transform transition cursor-pointer">
-                    See Product
+                    See Products
                   </button>
                 </Link>
               </div>

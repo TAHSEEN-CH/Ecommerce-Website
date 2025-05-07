@@ -42,15 +42,6 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-            <li className="h-10 transition-all duration-300">
-              <Link
-                to="/about"
-                className="flex items-center hover:text-[#F0B100] gap-1 text-gray-700"
-                onClick={() => setMenu(false)}
-              >
-                About
-              </Link>
-            </li>
             <li
               className="h-10 transition-all duration-300"
             >
@@ -77,6 +68,16 @@ const Navbar = () => {
 
             <li className="h-10 transition-all duration-300">
               <Link
+                to="/about"
+                className="flex items-center hover:text-[#F0B100] gap-1 text-gray-700"
+                onClick={() => setMenu(false)}
+              >
+                About
+              </Link>
+            </li>
+
+            <li className="h-10 transition-all duration-300">
+              <Link
                 to="/contact"
                 className="flex items-center hover:text-[#F0B100] gap-1 text-gray-700"
                 onClick={() => setMenu(false)}
@@ -88,11 +89,9 @@ const Navbar = () => {
 
           {/* Icons & Menu Button */}
           <div className="flex gap-x-5 md:text-2xl text-md justify-center items-center">
-            <IoMdSettings className="cursor-pointer hover:text-yellow-300" />
-            <FaHeart className="cursor-pointer hover:text-yellow-300" />
 
             {/* ad to Cart Page Render Icond is here  */}
-            <Link to='/adtoCart' className="relative text-2xl transition-all duration-600 ease-in-out">
+            <Link to='/adtoCart' className="relative text-2xl transition-all duration-600 ease-in-out" onClick={() => setMenu(false)}>
               <BsFillBasketFill
                 className="cursor-pointer hover:text-yellow-300" />
               {cartItems.length > 0 && (
@@ -136,13 +135,6 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-
-            <li className="flex justify-between items-center p-1 border-b border-gray-400 hover:text-white transition duration-300">
-              <Link to="/about" className="text-gray-900" onClick={() => setMenu(false)}>
-                About
-              </Link>
-            </li>
-
             <li
               className="flex justify-between relative  items-center p-1 border-b border-gray-400 hover:text-yellow  transition duration-300"
             >
@@ -157,6 +149,11 @@ const Navbar = () => {
             >
               <Link to="/blog" className="" onClick={() => setMenu(false)}>
                 Blog
+              </Link>
+            </li>
+            <li className="flex justify-between items-center p-1 border-b border-gray-400 hover:text-white transition duration-300">
+              <Link to="/about" className="text-gray-900" onClick={() => setMenu(false)}>
+                About
               </Link>
             </li>
             <li className="flex justify-between items-center p-1 border-b border-gray-400 hover:text-white transition duration-300">

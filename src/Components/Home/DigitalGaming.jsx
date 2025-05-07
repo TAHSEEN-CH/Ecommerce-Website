@@ -22,7 +22,7 @@ const DigitalGaming = () => {
                 <p className="text-gray-600 text-xl font-serif max-sm:text-lg mt-4">
                     Donec varius quam metus, ac ultricies ligula facilisis quis. Donec condimentum gravida accumsan. Fusce laoreet sit amet velit ut pretium. Aenean a mi placerat urna mollis aliquam et quis justo. Nullam gravida sem quis dolor feugiat convallis. Donec faucibus lectus et fermentum blandit libero elit cursus enim.
                 </p>
-                <Link to='/adtoCart'>
+                <Link to='/shop'>
                     <button className="mt-12 max-sm:mt-6  bg-yellow-500 text-white  text-xl md:py-3 px-3 py-2 md:px-8 lg:py-3 lg:px-8  shadow-md hover:bg-yellow-600 transition cursor-pointer">
                         Shop Now
                     </button>

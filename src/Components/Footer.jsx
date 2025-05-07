@@ -1,5 +1,6 @@
 import { FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
 import { FaFacebook, FaLinkedin, FaTiktok, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -62,14 +63,14 @@ const Footer = () => {
               <li>About Us</li>
               <li>Contact Us</li>
               <li>Returns & Exchanges</li>
-              <li>Shipping & Delivery</li>
-              <li>Privacy Policy</li>
+              <li><Link to='/faq'>FAQ</Link></li>
+              <li><Link to='/privacypolicy'>Privacy Policy</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-xl text-gray-800">Quick Links</h3>
             <ul className="mt-3 space-y-2">
-              <li>My Account</li>
+              <li><Link to='/comesoon'>Coming Soon</Link></li>
               <li>Store Location</li>
               <li>Orders Tracking</li>
               <li>Return Policy</li>

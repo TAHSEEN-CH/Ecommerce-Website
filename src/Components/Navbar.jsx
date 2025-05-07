@@ -12,8 +12,10 @@ import { IoIosMenu } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx"; // Added close icon
 import ShopPlus from "./ShopPlus";
 import { AiOutlineMinus } from "react-icons/ai";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
+  const { cartItems } = useCart();
   const navigate = useNavigate();
   const MovetoADtoCart = () => {
     navigate("/adtoCart");
@@ -226,10 +228,16 @@ const Navbar = () => {
             <FaHeart className="cursor-pointer hover:text-yellow-300" />
 
             {/* ad to Cart Page Render Icond is here  */}
-            <BsFillBasketFill
-              className="cursor-pointer hover:text-yellow-300"
-              onClick={() => MovetoADtoCart()}
-            />
+            <Link to='/adtoCart' className="relative text-2xl transition-all duration-600 ease-in-out">
+              <BsFillBasketFill
+                className="cursor-pointer hover:text-yellow-300" />
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-yellow-300 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {cartItems.length}
+                </span>
+              )}
+            </Link>
+
             <span className="relative  ">
               <span className="absolute top-[-13px]">
                 {/* Menu Toggle Button */}

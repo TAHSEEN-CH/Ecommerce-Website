@@ -5,6 +5,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Link } from "react-router-dom";
 
 const newproducts = [
   {
@@ -87,6 +88,7 @@ const bestproducts = [
   },
 ];
 
+
 const Projects = () => {
   const [nav, setNav] = useState("new");
 
@@ -100,33 +102,29 @@ const Projects = () => {
         <ul className="flex justify-center font-semibold text-gray-700 lg:text-xl md:text-xl md:gap-6 gap-3 lg:gap-6">
           <li
             onClick={() => setNav("new")}
-            className={`cursor-pointer transition ${
-              nav === "new" ? "text-yellow-500" : "hover:text-yellow-500"
-            }`}
+            className={`cursor-pointer transition ${nav === "new" ? "text-yellow-500" : "hover:text-yellow-500"
+              }`}
           >
             New Arrivals
           </li>
           <li
             onClick={() => setNav("best")}
-            className={`cursor-pointer transition ${
-              nav === "best" ? "text-yellow-500" : "hover:text-yellow-500"
-            }`}
+            className={`cursor-pointer transition ${nav === "best" ? "text-yellow-500" : "hover:text-yellow-500"
+              }`}
           >
             Best Sellers
           </li>
           <li
             onClick={() => setNav("onSale")}
-            className={`cursor-pointer transition ${
-              nav === "onSale" ? "text-yellow-500" : "hover:yellow-gray-500"
-            }`}
+            className={`cursor-pointer transition ${nav === "onSale" ? "text-yellow-500" : "hover:text-yellow-500"
+              }`}
           >
             On Sales
           </li>
           <li
             onClick={() => setNav("sale")}
-            className={`cursor-pointer transition ${
-              nav === "sale" ? "text-yellow-500" : "hover:text-yellow-500"
-            }`}
+            className={`cursor-pointer transition ${nav === "sale" ? "text-yellow-500" : "hover:text-yellow-500"
+              }`}
           >
             Sale Items
           </li>
@@ -210,9 +208,11 @@ const Projects = () => {
                         <IoRefresh className="h-5 text-gray-500 w-5 duration-500 hover:text-white transition" />
                       </button>
                     </div>
-                    <button className="bg-white rounded-full text-black -translate-x-1/2 absolute bottom-2 duration-500 group-hover:opacity-100 hover:bg-yellow-500 hover:text-white left-1/2 opacity-0 px-6 py-2 transform transition">
-                      Add To Cart
-                    </button>
+                    <Link to='/adtoCart'>
+                      <button className="bg-white rounded-full text-black -translate-x-1/2 absolute bottom-2 duration-500 group-hover:opacity-100 hover:bg-yellow-500 hover:text-white left-1/2 opacity-0 px-6 py-2 transform transition">
+                        See Products
+                      </button>
+                    </Link>
                   </div>
                   <h3 className="text-center text-gray-800 text-lg font hover:text-yellow-500 mt-4">
                     {product.title}

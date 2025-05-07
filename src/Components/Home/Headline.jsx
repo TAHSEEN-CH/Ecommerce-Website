@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 let cardData = [
@@ -18,7 +19,7 @@ let cardData = [
   
   const Headline = () => {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 md:px-[25px] gap-8 justify-center my-5 px-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 md:px-[25px] gap-8 justify-center my-5 px-4">
         {cardData.map((item) => (
           <div className="flex flex-col sm:w-full md:flex-row items-center gap-8 py-4 md:px-4 lg:px-10 justify-between  bg-[#efefef]">
             <img
@@ -31,9 +32,9 @@ let cardData = [
               <h3 className="font-medium leading-[26px] w-[104px] text-[20px]">
                 {item.productName}
               </h3>
-              <a href="#" className="underline hover:text-yellow-500">
+              <Link to="/adtoCart" className="underline hover:text-yellow-500">
                 Shop Now
-              </a>
+              </Link>
             </div>
           </div>
         ))}

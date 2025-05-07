@@ -152,7 +152,7 @@ const Products = () => {
         </div>
 
         {/* Main content */}
-        <div class=" w-full">
+        <div className=" w-full">
           <div className="bg-white shadow-md rounded-lg p-6">
             <div className="flex flex-col md:flex-row justify-between mb-4 gap-4">
               <h2 className="text-xl font-semibold">Product List</h2>

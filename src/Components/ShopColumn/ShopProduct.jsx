@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IoHeart, IoRefresh, IoSearch } from "react-icons/io5";
+import { useCart } from '../../context/CartContext';;
 
 const newproducts = [
   { id: 1, image: "/shop/product(10).jpeg", hoverimage: "/shop/product(11).jpeg", title: "New Affordable Fire TV", price: "$38.50" },
@@ -13,6 +14,7 @@ const newproducts = [
 ];
 
 const ShopProduct = () => {
+  const { addToCart } = useCart();
   const [products, setProducts] = useState(newproducts);
   const [sortType, setSortType] = useState("relevance");
   const [currentPage, setCurrentPage] = useState(1);
@@ -73,7 +75,11 @@ const ShopProduct = () => {
                   <IoRefresh className="h-5 text-gray-500 w-5 duration-300 hover:text-white transition" />
                 </button>
               </div>
-              <button className="bg-white rounded-full text-black -translate-x-1/2 absolute bottom-2 duration-300 group-hover:opacity-100 hover:bg-yellow-500 hover:text-white left-1/2 opacity-0 px-6 py-2 transform transition">
+              <button
+
+                onClick={() => addToCart(product)}
+                className="w-[80%] bg-white rounded-full text-black -translate-x-1/2 absolute bottom-2 group-hover:opacity-100 hover:bg-yellow-500 hover:text-white left-1/2 opacity-0 px-6 py-2 transform transition hover:cursor-pointer duration-300"
+              >
                 Add To Cart
               </button>
             </div>

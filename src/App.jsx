@@ -26,6 +26,7 @@ import Products from "./Pages/Products";
 import Users from "./Pages/Users";
 import AddToCART from "./Components/Home/AddToCART";
 import AddProduct from "./Pages/AddProduct";
+import { CartProvider } from "./context/CartContext";
 // <<<<<<< HEAD
 // import AddToCART from "./Components/Home/AddToCART";
 
@@ -35,9 +36,11 @@ import AddProduct from "./Pages/AddProduct";
 const Mainlayout = () => {
   return (
     <div>
-      <Navbar />
-      <Outlet />
-      <Footer />
+      <CartProvider>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </CartProvider>
     </div>
   );
 };
@@ -49,20 +52,22 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
       { path: "/adtoCart", element: <AddToCART /> },
+
       { path: "/privacypolicy", element: <PrivacyPolicy /> },
       { path: "/faq", element: <FaqPage /> },
       { path: "/comesoon", element: <ComeSoon /> }, //this one
-      { path: "/blog", element: <BlogGrid /> },
       { path: "/bloglist", element: <BlogList /> },
-      { path: "/singleblog", element: <SingleBlog /> },
-      { path: "/shopcolumn", element: <ShopColumn /> },
+      { path: "/shop", element: <ShopColumn /> },
       { path: "/shopcolumnsecond", element: <ShopColumnSecond /> },
+      // { path: "/shop", element: <Shop /> },
+      { path: "/singleproduct", element: <SingleProduct /> },
 
-      { path: "/shop", element: <Shop /> },
+      { path: "/blog", element: <BlogGrid /> },
+      { path: "/singleblog/:id", element: <SingleBlog /> },
+
 
       { path: "/contact", element: <Contact /> },
       { path: "/cart", element: <Cart /> },
-      { path: "/singleproduct", element: <SingleProduct /> },
 
       { path: "/adminpanel", element: <AdminPanel /> },
       { path: "/dashboard", element: <Dashboard /> },
@@ -71,8 +76,6 @@ const router = createBrowserRouter([
       // {path:"/users", element:< Users/>}
       { path: "/users", element: <Users /> },
       { path: "/addproduct", element: <AddProduct /> },
-
-      { path: "/about", element: <About /> },
     ],
   },
   { path: "*", element: <NotPage /> },

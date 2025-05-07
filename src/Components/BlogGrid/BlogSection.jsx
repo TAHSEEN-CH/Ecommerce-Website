@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 export default function BlogPage() {
@@ -154,7 +155,9 @@ export default function BlogPage() {
                             <div className="p-4">
                                 <h2 className="text-xl font-bold hover:text-yellow-500">{post.title}</h2>
                                 <p className="mt-2 text-gray-600">{post.description}</p>
+                                <Link to={`/singleblog/${post.id}`}>
                                 <button className="mt-4 bg-black text-white px-4 py-2 hover:bg-gray-700">Read More</button>
+                                </Link>
                             </div>
                         </div>
                     ))}

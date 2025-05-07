@@ -1,5 +1,6 @@
 import React from "react";
 import { IoHeart, IoRefresh, IoSearch } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const product = [
   {
@@ -113,9 +114,11 @@ const FeaturesProducts = () => {
                     <IoRefresh className="h-5 text-gray-500 w-5 duration-500 hover:text-white transition" />
                   </button>
                 </div>
-                <button className="bg-yellow-500 rounded-full text-black -translate-x-1/2 absolute bottom-2 duration-500 group-hover:opacity-100 hover:text-yellow-500 hover:bg-white left-1/2 opacity-0 px-3 py-2 transform transition cursor-pointer">
-                  Add To Cart
-                </button>
+                <Link to="/adtoCart">
+                  <button className="bg-yellow-500 rounded-full text-black -translate-x-1/2 absolute bottom-2 duration-500 group-hover:opacity-100 hover:text-yellow-500 hover:bg-white left-1/2 opacity-0 px-3 py-2 transform transition cursor-pointer">
+                    See Product
+                  </button>
+                </Link>
               </div>
               <h3 className="text-center text-gray-800 text-lg font hover:text-yellow-500 mt-4 mb-1">
                 {product.title}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const blogs = [
   {
@@ -55,9 +56,11 @@ const HomeBlog = () => {
               <p className="text-gray-800 text-sm mt-2">{blog.description}</p>
 
               {/* Read More Button */}
-              <button className="mt-4 px-4 py-2 bg-black text-white text-sm font-medium hover:bg-gray-700">
-                Read More
-              </button>
+              <Link to="/blog">
+                <button className="mt-4 px-4 py-2 bg-black text-white text-sm font-medium hover:bg-gray-700">
+                  Read More
+                </button>
+              </Link>
             </div>
           </div>
         ))}

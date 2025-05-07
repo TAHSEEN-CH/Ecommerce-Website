@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 const images = [
-  { src: "/public/Home/card1.jpg", title: "Headphones", off: "-7%" },
-  { src: "/public/Home/card2.jpg", title: "Speaker", off: "Sale" },
-  { src: "/public/Home/card3.jpg", title: "Laser Light", off: "-7%" },
-  { src: "/public/Home/card4.jpg", title: "VR 3D Box", off: "Sale" },
-  { src: "/public/Home/card3.jpg", title: "Laser Light", off: "-7%" },
+  { src: "/Home/card1.jpg", title: "Headphones", off: "-7%" },
+  { src: "/Home/card2.jpg", title: "Speaker", off: "Sale" },
+  { src: "/Home/card3.jpg", title: "Laser Light", off: "-7%" },
+  { src: "/Home/card4.jpg", title: "VR 3D Box", off: "Sale" },
+  { src: "/Home/card3.jpg", title: "Laser Light", off: "-7%" },
 ];
 
 const HomeSalesProduct = () => {
